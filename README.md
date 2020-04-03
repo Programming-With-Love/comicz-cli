@@ -2,5 +2,4 @@
 Crawl some comics from internet.
 
 ## TODO
-[X] 1212
-[] yekk
+- [] 思考交互
