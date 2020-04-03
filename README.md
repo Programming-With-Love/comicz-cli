@@ -2,5 +2,8 @@
 Crawl some comics from internet.
 
 ## TODO
--[] 思考交互
--[] 123
+### command line  
+
+- [ ] download_all
+- [ ] download_single
+- [ ] search 
