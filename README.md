@@ -2,4 +2,5 @@
 Crawl some comics from internet.
 
 ## TODO
-[X] 
+[X] 1212
+[] yekk
