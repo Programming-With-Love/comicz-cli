@@ -1,0 +1,1008 @@
+﻿/*  -----   头尾    -----  */
+div.cHeader
+{
+	margin: auto;
+	width: 980px;
+	margin-top:0px;
+}
+
+div.cHding
+{
+	background-color: whitesmoke;
+	padding-top: 5px;
+	padding-left: 10px;
+	padding-right:10px;
+	border-bottom: darkgray 1px solid;
+	overflow:hidden;
+	height:28px;
+}
+
+div.cHYinYin
+{
+	text-align:left;
+	padding-top:3px;
+}
+
+div.cHYinYin a
+{
+	margin-left: 2px;
+}
+
+div.cHBar
+{
+	text-align:right;
+	background-repeat: no-repeat;
+	float:right;
+	
+}
+
+
+
+div.cHBg
+{
+	
+	
+}
+
+div.cLogo
+{
+	text-align: left;
+	height:100px;
+	
+}
+div.cLogo img
+{
+	margin-top:20px;
+	margin-left:20px;
+	margin-right:10px;
+}
+div.cLogo a
+{
+	font-family: 'Comic Sans MS';
+	font-size: 40px;
+	color: whitesmoke;
+}
+
+div.cHNav
+{
+	clear: left;
+	text-align: center;
+	color: #ffffff;
+	height: 35px;
+	FILTER: alpha( style=0,opacity=70);
+	background-color: #003333;
+}
+div.cHNav div
+{
+	padding-top: 10px;
+	font-size: 14px;
+}
+div.cHNav a
+{
+	color: #ffffff;
+	margin-right:8px;
+	
+}
+
+
+.cFooter
+{
+	margin: auto;
+	width: 960px;
+	clear: left;
+	height: 60px;
+	background-color: #0d151c;
+	
+	color: #ffffff;
+	padding-top: 15px;
+}
+.cFooterTxt 
+{
+	margin-top:10px;
+	color: #ffffff;
+}
+.cFooterTxt a
+{
+	color: #ffffff;
+}
+/*  -----   头尾 end   -----  */
+
+
+div.cBadge
+{
+	margin-left: 5px;
+	margin-right: 10px;
+	font: bold 14px "Lucida Grande" , Lucida, Verdana, sans-serif;
+	padding-top: 11px;
+	padding-left: 10px;
+}
+
+div.cClearLeft
+{
+	clear: left;
+	
+	
+}
+
+div.cc
+{
+	
+	margin-bottom: 15px;
+	
+}
+div.cc2
+{
+	margin-bottom: 15px;
+
+}
+
+
+div.cAreaTitle
+{
+	margin-top:10px;
+	margin-bottom:10px;
+	clear:left;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+div.cRecList
+{
+	padding: 5px;
+
+}
+div.cRecList div
+{
+	border-bottom: whitesmoke 1px solid;
+	padding-top:2px;
+	padding-bottom:2px;
+}
+
+div.cRecList div a
+{
+	color: #0d151c;
+}
+div.cRecList b
+{
+	margin-right: 10px;
+	color: #006699;
+}
+
+
+
+/* -------homepage---------*/
+
+div.cFenXiang
+{
+	height: 80px;
+	
+	padding: 5px;
+
+}
+
+
+
+div.cComicNew
+{
+	margin-top: 10px;
+	margin-left: 5px;
+	
+}
+
+div.cComicNew div
+{
+	margin-right: 5px;
+	margin-bottom: 10px;
+	margin-top:5px;
+	overflow: hidden;
+}
+
+div.cComicNew2
+{
+	margin-top: 10px;
+	margin-left: 5px;
+}
+
+div.cComicNew2 div
+{
+	float: left;
+	
+	margin-right: 5px;
+	margin-bottom: 7px;
+	overflow: hidden;
+}
+
+div.cNCI
+{
+	float:left;
+	height: 100px;
+	border-bottom: gainsboro 1px dotted;
+	line-height: 150%;
+	width:100%;
+}
+
+div.cNCI img
+{
+	width: 80px;
+	height: 96px;
+	float: left;
+	margin-right: 10px;
+	border-bottom: #666666 1px solid;
+	border-left: #666666 1px solid;
+	border-top: #666666 1px solid;
+	border-right: #666666 1px solid;
+}
+
+a.cHPVolLink
+{
+	color: darkslategray;
+        margin-top: 15px;
+        height: 28px;
+}
+
+
+div.cTabHot
+{
+	
+	margin-top: 15px;
+	margin-bottom: 20px;
+	margin-left: 10px;
+	margin-right:10px;
+	font: 14px "Lucida Grande" , Lucida, Verdana, sans-serif;
+	border-bottom: darkgray 1px solid;
+}
+
+div.cTabHot a
+{
+	display: inline-block;
+	margin-right: 10px;
+	padding: 3px;
+	cursor: hand;
+}
+
+a.TabHotSed
+{
+	display: inline-block;
+	background-color: #003366;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+div.cComicHot
+{
+	
+	margin-top: 10px;
+	height: 550px;
+	
+}
+
+div.cTabHotHtm
+{
+	
+	
+}
+div.cTabHotHtmHide
+{
+	display:none;
+}
+
+div.cTabHotHtm li
+{
+	float: left;
+	width: 125px;
+	height: 180px;
+	list-style-type: none;
+	text-align:center;
+}
+div.cTabHotHtm img
+{
+	width: 90px;
+	height: 115px;
+	border-bottom: #666666 1px solid;
+	border-left: #666666 1px solid;
+	border-top: #666666 1px solid;
+	border-right: #666666 1px solid;
+	margin-bottom: 5px;
+}
+
+div.cTabPinYin
+{
+	margin-top: 10px;
+	margin-left:10px;
+	margin-right:10px;
+	font: 14px "Lucida Grande" , Lucida, Verdana, sans-serif;
+	border-bottom: darkgray 1px solid;
+}
+
+div.cTabPinYin a
+{
+	display: inline-block;
+	margin-right: 3px;
+	padding: 3px;
+	cursor: hand;
+}
+
+a.TabPinYinSed
+{
+	display: inline-block;
+	background-color: #003366;
+	color: #ffffff;
+	
+}
+
+div.cTabPYHtmHide
+{
+	display:none;
+}
+
+div.cTabPYHtm
+{
+	height: 300px;
+}
+
+div.cATitle
+{
+	font-weight: bold;
+	font-size: 18px;
+	color: darkorange;
+	padding: 8px;
+	text-align: center;
+	background-color: whitesmoke;
+	margin-left:10px;
+	margin-right:10px;
+}
+
+div.cAList
+{
+	height: 300px;
+	padding-top:5px;
+	padding-left:5px;
+}
+
+div.cAList li
+{
+	text-align: left;
+	margin-left: 0px;
+	list-style-type: none;
+	float: left;
+	width: 200px;
+	margin-bottom: 10px;
+	height:18px;
+}
+
+.cA1_1
+{
+	margin-bottom: 8px;
+}
+
+.cA1_2
+{
+	margin-bottom: 8px;
+}
+
+div.cRandomHtm
+{
+	height:377px;
+	overflow:hidden;
+}
+
+div.cRandomHtm li
+{
+	float: left;
+	width: 125px;
+	height: 180px;
+	list-style-type: none;
+	text-align:center;
+}
+div.cRandomHtm img
+{
+	width: 90px;
+	height: 115px;
+	border-bottom: #666666 1px solid;
+	border-left: #666666 1px solid;
+	border-top: #666666 1px solid;
+	border-right: #666666 1px solid;
+	margin-bottom: 5px;
+}
+
+
+div.cReadList
+{
+	margin-top: 5px;
+	margin-left: 10px;
+	line-height: 120%;
+}
+
+div.cReadList div
+{
+	padding-bottom: 3px;
+	padding-top: 3px;
+	border-bottom: lightgrey 1px solid;
+}
+div.cReadList span
+{
+	color: #669933;
+}
+
+
+/*      -------   info   -------       */
+
+h1.cTitle
+{
+	font-weight: bold;
+	font-size: 9pt;
+	margin: 0px;
+	color: black;
+}
+
+.cDefaultImg 
+{
+	text-align:center;
+}
+.cDefaultImg img
+{
+	border-right: darkgray 1px solid;
+	border-top: darkgray 1px solid;
+	border-left: darkgray 1px solid;
+	width: 120px;
+	border-bottom: darkgray 1px solid;
+	height: 160px;
+	
+}
+
+.cInfoTxt
+{
+}
+
+.cInfoTxt td
+{
+	border-bottom: whitesmoke 1px solid;
+}
+
+div.cInfoAct
+{
+	clear:left;
+	width: 100%;
+	margin-bottom: 10px;
+	text-align:right;
+	padding:5px;
+}
+
+.cCon
+{
+	line-height: 150%;
+	padding: 15px;
+}
+
+div.cVol
+{
+	margin: 5px;
+	
+	line-height: 200%;
+	border-top: gainsboro 1px solid;
+	padding-top: 10px;
+	margin-bottom: 20px;
+	OVERFLOW: hidden;
+}
+
+span.cRssSpan
+{
+	float: right;
+	margin-right: 20px;
+	font-size: 14px;
+}
+span.cRssSpan img
+{
+	border:0px;
+}
+
+div.cVolList
+{
+	overflow:hidden;
+	min-height: 100px;
+	width: 100%;
+}
+
+div.cVolTag
+{
+	clear:left;
+	height: 25px;
+	background-image: url(/images/bg_sort.png);
+	background-position-x: left;
+	background-repeat: no-repeat;
+	color: #09c;
+	padding-top:3px;
+	padding-left:5px;
+	margin-bottom:10px;
+	margin-top:10px;
+}
+
+.cVolUl li
+{
+	float: left;
+	margin-left: 0px;
+	overflow: hidden;
+	width: 200px;
+	height: 20px;
+	text-align: left;
+	border-bottom: slategray 0px dashed;
+	margin-bottom: 10px;
+	margin-right: 11px;
+	list-style-type: none;
+	background:url(/images/com.gif) 0 0.6em no-repeat;
+	line-height:2em;
+	display:block;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	text-indent:17px;
+}
+
+.cVolUl a
+{
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+
+
+.cVolUl span a
+{
+	float: right;
+	color: darkgray;
+}
+.cVolUl span a:hover
+{
+	background-color: whitesmoke;
+	color: darkgray;
+	font-weight: normal;
+}
+
+a.cVolNew
+{
+	color: crimson;
+}
+a.cVolNew img
+{
+	margin-left: 5px;
+	border-bottom-style: none;
+	border-right-style: none;
+	border-top-style: none;
+	border-left-style: none;
+}
+
+div.cCtDomian
+{
+	text-align: right;
+	margin-bottom: 10px;
+}
+
+div.cCRHtm
+{
+	clear:left;
+	background-color: whitesmoke;
+	border-bottom: gainsboro 1px solid;
+	border-left: gainsboro 1px solid;
+	border-top: gainsboro 1px solid;
+	border-right: gainsboro 1px solid;
+	color: dimgray;
+	margin-top:30px;
+	margin-bottom:10px;
+}
+
+div.cCRHtm a
+{
+	color: dimgray;
+}
+
+div.cCRTitle
+{
+	padding-top:5px;
+	margin-left: 20px;
+	font-weight: bold;
+}
+div.cCRHtm ul
+{
+	margin-left:0px;
+}
+div.cCRHtm li
+{
+	margin-left:20px;
+	list-style-type: none;
+}
+
+
+div.cReView
+{
+	
+}
+
+div.cReViewForm
+{
+	padding:5px;
+}
+div.cReViewForm textarea
+{
+	width: 95%;
+	height: 60px;
+	padding: 5px;
+	font-size: 14px;
+}
+
+div.cReViewAct
+{
+	text-align:right;
+	padding-right:15px;
+	padding-top:5px;
+}
+
+div.cReViewListAct
+{
+	border-bottom: gainsboro 1px solid;
+	padding:5px;
+	margin-right:15px;
+	margin-bottom:15px;
+}
+div.cReViewListPC
+{
+	padding:5px;
+	text-align:right;
+}
+
+div.cReViewList
+{
+	padding-left:10px;
+}
+div.cReViewItem
+{
+	
+	border-bottom: gainsboro 1px dashed;
+	margin-bottom:5px;
+}
+
+div.cReViewItem .c1
+{
+	padding: 10px;
+}
+div.cReViewItem .c2
+{
+	padding: 5px;
+	color: gray;
+}
+
+div.cReViewMore
+{
+	text-align:center;
+	padding:5px;
+}
+
+/* ------------------- */
+
+
+
+
+
+
+div.cComicIndex
+{
+	text-align: left;
+	padding: 10px;
+}
+
+div.caa
+{
+}
+div.caa1
+{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+}
+div.caa1 span
+{
+	font-size: 14px;
+}
+
+div.caa1 b
+{
+	font-size: 14px;
+	color: red;
+	font-weight: normal;
+}
+
+div.caa2
+{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	line-height: 200%;
+	background-color: #ffffff;
+	padding-left: 10px;
+}
+div.caa2 a
+{
+	width: 200px;
+	display: inline-block;
+	overflow: hidden;
+	height: 20px;
+	margin-right: 25px;
+	background-image: url(/images/folder.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 15px;
+}
+a.caamore
+{
+	float: right;
+}
+
+
+span.cSiteName
+{
+	font:35px "微软雅黑";
+	color: white;
+	
+	float:left;
+	margin-right:5px;
+}
+
+
+
+
+
+
+/* public */
+div.cComicTop
+{
+	text-align: left;
+	padding-left: 20px;
+	padding-bottom:20px;
+}
+
+
+div.cTArea
+{
+	width: 425px;
+	height: 560px;
+	margin-top: 10px;
+	margin-right: 20px;
+	border-bottom: darkgray 1px solid;
+	border-left: darkgray 1px solid;
+	border-top: darkgray 1px solid;
+	border-right: darkgray 1px solid;
+	background-color: #ffffff;
+	float: left;
+	
+}
+
+div.cTArea div
+{
+	padding: 5px;
+	border-bottom: whitesmoke 1px solid;
+	
+}
+
+div.cTAreaName
+{
+	background-color: whitesmoke;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+div.cTArea b
+{
+	margin-right: 10px;
+	color: #006600;
+}
+
+
+span.cMoreTop
+{
+	float: right;
+	font-weight: normal;
+}
+
+div.cUpComicTop
+{
+	text-align: left;
+	padding-left: 20px;
+	padding-bottom:20px;
+}
+
+
+div.cpitem
+{
+	float: left;
+	height: 20px;
+	width: 420px;
+	padding-top: 8px;
+	margin-right: 20px;
+	overflow: hidden;
+	background-color: #ffffff;
+	margin-bottom: 5px;
+	padding-right: 5px;
+	border-bottom: whitesmoke 1px solid;
+}
+
+div.cpitem .t1
+{
+	text-align: center;
+	font-weight: bold;
+	color: #006600;
+	display: inline-block;
+	width: 30px;
+}
+div.cpitem .t2 a
+{
+}
+div.cpitem .t3 a
+{
+	margin-left: 10px;
+}
+div.cpitem .t4 a
+{
+	margin-left: 10px;
+	color: dimgray;
+}
+div.cpitem .t5
+{
+	text-align: right;
+	color: darkred;
+	float: right;
+}
+
+
+
+
+/*  图片列表  */
+
+
+div.cComicList
+{
+	height: 100%;
+	margin-top:10px;
+}
+
+div.cComicList img
+{
+	width: 120px;
+	height: 160px;
+	border-right: dimgray 1px solid;
+	border-top: dimgray 1px solid;
+	border-left: dimgray 1px solid;
+	border-bottom: dimgray 1px solid;
+	margin-bottom: 5px;
+}
+
+div.cComicList ul
+{
+	margin-left: 1px;
+}
+
+div.cComicList LI
+{
+	
+	float: left;
+	margin-left: 0px;
+	margin-right: 5px;
+	overflow: hidden;
+	width: 165px;
+	height: 205px;
+	text-align: center;
+	border-bottom: gainsboro 1px solid;
+	margin-bottom: 10px;
+	list-style-type: none;
+	
+}
+
+span.clw1
+{
+	color: #009900;
+}
+span.clw2
+{
+	color: #ff3366;
+}
+span.ctor
+{
+	color: dimgray;
+}
+
+
+div.cComicPageChange
+{
+	float: right;
+	padding-top:12px;
+	padding-right:5px;
+}
+div.cComicPageChange2
+{
+	clear: left;
+	padding: 3px;
+	text-align: right;
+}
+
+span.cPageChangeLink
+{
+	padding-left: 20px;
+}
+
+
+div.cFriendLink
+{
+	
+	width: 960px;
+	margin: auto;
+	text-align: left;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #ffffff;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+div.cFriendLink a
+{
+	padding-left: 10px;
+}
+
+
+
+
+/*  search  */
+
+div.cDataList
+{
+	min-height: 300px;
+	margin-bottom: 10px;
+}
+
+div.cInfoItem
+{
+	border-bottom: #E8E8E8 1px solid;
+	padding: 5px;
+	margin-top: 5px;
+	height: 100%;
+	line-height: 180%;
+}
+
+div.cInfoItem span
+{
+	margin-right:20px;
+}
+
+div.cListSlt
+{
+	float: right;
+}
+div.cListSlt img
+{
+	width: 70px;
+	height: 90px;
+	border-bottom: dimgray 1px solid;
+	border-left: dimgray 1px solid;
+	border-top: dimgray 1px solid;
+	border-right: dimgray 1px solid;
+}
+
+div.cListTitle
+{
+	margin-top:10px;
+	padding: 3px;
+	font-size: 14px;
+	margin-bottom: 5px;
+}
+
+div.cListh1, div.cListh2, div.cListh3
+{
+	color: gray;
+}
+
+div.cDataPageChange
+{
+	display:none;
+	text-align: right;
+}
+span.cPageChangeLink
+{
+	margin-left: 20px;
+}
