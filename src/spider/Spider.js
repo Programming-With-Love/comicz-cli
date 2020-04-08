@@ -11,13 +11,6 @@ class Spider {
    * @memberof Spider
    */
   async crawl() {}
-
-  /**
-   * 解析
-   *
-   * @memberof Spider
-   */
-  async _parse() {}
 }
 
 module.exports = Spider;

@@ -4,7 +4,11 @@
   "description": "a crawler cli of comics",
   "main": "bin/cli.js",
   "scripts": {
-    "test": "node ./test/index.js"
+    "test": "node ./test/index.js",
+    "start": "node ./bin/cli.js"
+  },
+  "bin": {
+    "comicz-cli": "bin/cli.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +32,7 @@
     "cheerio": "^1.0.0-rc.3",
     "fs-extra": "^9.0.0",
     "inquirer": "^7.1.0",
+    "ora": "^4.0.3",
     "progress": "^2.0.3"
   }
 }
