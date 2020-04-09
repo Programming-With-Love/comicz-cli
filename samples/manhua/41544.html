@@ -1,0 +1,301 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1"><title>
+	小粥的日常 漫画 - HH漫画 汗汗酷漫
+</title><meta name="description" content="hhcool.com" /><meta name="keywords" content="漫画,在线漫画,免费漫画,日本漫画,HH漫画 汗汗酷漫" /><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /><link rel="stylesheet" type="text/css" media="screen" href="/css/style.css" /><link rel="stylesheet" type="text/css" media="screen" href="/css/private.css" />
+    <script language="javascript" src="/script/ajaxClass.js"></script>
+    <script language="javascript" src="/script/cookie_comic.js"></script>
+    <script language="javascript" src="/script/SNSPush3Class.js"></script>
+    <script type="text/javascript" src="/js/slideshow.js"></script>
+    <script language="javascript">
+    function newRec()
+    {
+        var sID = document.getElementById("hdComicID").value;
+        location.href = "/comic/comicrec.aspx?ID=" + sID;
+    }
+    function addFav()
+    {
+        var sID = document.getElementById("hdComicID").value;
+        var sVIP = document.getElementById("hdVIPComic").value;
+        var url = "/ax/addFav.aspx?ComicID=" + sID + "&VIP=" + sVIP;   
+       // window.open(url);
+        var callback = addFav_callback;
+        var data = "";
+        Request.reSend(url,data,callback);
+    }
+    function addFav_callback(o)
+    {
+        if(o == null)
+        {
+            alert("未知错误，无法收藏");
+            return;
+        }
+        var s = o.responseText;
+        alert(s);
+    }
+    
+    function window_onload()
+    {
+        
+        var slist = GetCookie("ViewCtTxt");
+        //alert(slist)
+	    var sHtm = "";
+	    for(i=0;i<slist.split("^").length;i++)
+	    {
+		    sHtm += getRListHtm(slist.split("^")[i]);	
+	    }
+	    document.getElementById("iComicReadList").innerHTML = sHtm;
+    	
+    }
+    function getRListHtm(s)
+    {
+	    return "<div><a target='_blank' href='"+ s.split("⊙")[1] +"'>"+ s.split("⊙")[0] + "</a>";
+    }
+    
+    function downComic()
+    {
+        var sID = document.getElementById("hdComicID").value;
+        var sVIP = document.getElementById("hdVIPComic").value;
+        var sUrl = "/comic/comicdown.aspx?id=" + sID;
+        if(sVIP == "Y")
+            sUrl += "&vip=Y";
+        window.open(sUrl);
+    }
+    
+    function doPing(c)
+    {
+        var sID = document.getElementById("hdComicID").value;
+        var sVIP = document.getElementById("hdVIPComic").value;
+        var url = "/ax/axRating.aspx?ComicID=" + sID + "&C=" + c + "&VIP="+ sVIP;   
+        
+       // window.open(url);
+        var callback = doPing_callback;
+        var data = "";
+        Request.reSend(url,data,callback);
+    }
+    function doPing_callback(o)
+    {
+        if(o == null)
+        {
+            alert("未知错误");
+            return;
+        }
+        var s = o.responseText;
+        if(s == "Already")
+        {
+            document.getElementById("spRatingMsg").innerHTML = "已经评价过了";
+            return;
+        }
+                
+        document.getElementById("spRatingMsg").innerHTML = "谢谢你的评价";
+    }
+    function me(t,s)
+    {
+        var smid = t.id;
+        smid = smid.replace("sm","")
+        
+        for(i=1;i<=5;i++)
+        {
+            if(i < smid)
+                document.getElementById("sm" + i).src = "/images/starl.gif";
+        }
+        
+        t.src = "/images/starl.gif";
+        document.getElementById("spRatingMsg").innerHTML = s;
+    }
+    function mt()
+    {
+        for(i=1;i<=5;i++)
+        {
+           document.getElementById("sm" + i).src = "/images/stara.gif";
+        }
+        document.getElementById("spRatingMsg").innerHTML = "";
+    }
+    function initRating()
+    {
+        var sHtm = "";
+        
+        sHtm += "<a href=\"\" onclick=\"doPing(2);return false;\"><img id='sm1' src='/images/stara.gif' onmousemove=\"me(this,'很烂 2分')\" onmouseout=\"mt()\"></a>";
+        sHtm += "<a href=\"\" onclick=\"doPing(4);return false;\"><img id='sm2' src='/images/stara.gif' onmousemove=\"me(this,'无聊 4分')\" onmouseout=\"mt()\"></a>";
+        sHtm += "<a href=\"\" onclick=\"doPing(6);return false;\"><img id='sm3' src='/images/stara.gif' onmousemove=\"me(this,'普通 6分')\" onmouseout=\"mt()\"></a>";
+        sHtm += "<a href=\"\" onclick=\"doPing(8);return false;\"><img id='sm4' src='/images/stara.gif' onmousemove=\"me(this,'好看 8分')\" onmouseout=\"mt()\"></a>";
+        sHtm += "<a href=\"\" onclick=\"doPing(10);return false;\"><img id='sm5' src='/images/stara.gif' onmousemove=\"me(this,'极品 10分')\" onmouseout=\"mt()\"></a>";
+        //alert(sHtm)
+        document.getElementById("spRatingImg").innerHTML = sHtm;
+    }
+    </script>
+
+</head>
+<body>
+    
+
+<div class="cHding">
+    <div class="cHBar">
+        <div class="cHBarTxt">
+          <a href="/">返回首页</a> | <a title="线上高速漫画" href="http://www.somanhua.com">漫画大全</a> | <a title="bl漫画" href="http://blman.net">BL漫画</a> | <a title="虎虎漫画" href="http://www.wumanhua.com">污漫画 </a> | <a href="/sitemap">网站地图</a> | <a href="/rss.html">RSS订阅</a>        </div>
+  </div>
+    <div class="cHYinYin">
+       欢迎来到HH漫画 汗汗酷漫  [www.hhimm.com] 
+    </div>
+</div>
+<div class="cHeader">
+    <div class="cHBg" id="iHBG">
+        <div class="cLogo">
+            <a href="/">
+        <img src="/images/logo.png" alt="HH漫画 汗汗酷漫" border="0"></a> </div>
+<div class="cHNav">
+            <div>
+                <a href="/">首页</a> <a href="/comic/"><span class="tuc">漫画目录</span> </a>  <span><a href='/comic/class_1.html'>萌系</a></span><span><a href='/comic/class_2.html'>搞笑</a></span><span><a href='/comic/class_3.html'>格斗</a></span><span><a href='/comic/class_4.html'>科幻</a></span><span><a href='/comic/class_5.html'>剧情</a></span><span><a href='/comic/class_6.html'>侦探</a></span><span><a href='/comic/class_7.html'>竞技</a></span><span><a href='/comic/class_8.html'>魔法</a></span><span><a href='/comic/class_9.html'>神鬼</a></span><span><a href='/comic/class_10.html'>校园</a></span><span><a href='/comic/class_11.html'>惊栗</a></span><span><a href='/comic/class_12.html'>厨艺</a></span><span><a href='/comic/class_13.html'>伪娘</a></span><span><a href='/comic/class_15.html'>冒险</a></span><span><a href='/comic/class_19.html'>小说</a></span><span><a href='/comic/class_20.html'>港漫</a></span><span><a href='/comic/class_21.html'>耽美</a></span><span><a href='/comic/class_22.html'>经典</a></span><span><a href='/comic/class_23.html'>欧美</a></span><span><a href='/comic/class_24.html'>日文</a></span><span><a href='/comic/class_25.html'>亲情</a></span></div>
+        </div>
+    </div>
+</div>
+<script language="javascript" src="/script/heraderact.js"></script>
+    <div id="container">
+        <div id="area">
+            <div id="bar">
+                <script language="javascript" src="/script/searchbar.js"></script>
+<div id="cart">
+    <h3>
+        全站内容搜索</h3>
+    <div>
+        <input type="text" class="fieldso" id="so" name="so" value="" size="20" onkeydown="SearchCheck()" />
+    </div>
+    <a href="http://dmeden.net/so" onclick="SearchGo();return false;" title="全站搜寻" id="checkout">全站搜索</a>
+    <li class="item"><a href="/top/newrating.aspx">最近刷新的漫画 TOP100 </a></li>
+    <li class="item"><a href="/top/hotrating.aspx">最多人看的漫画 TOP100 </a></li>
+    <li class="item"><a href="/top/toprating.aspx">评分最高的漫画 TOP100</a> </li>
+    <li class="item"><a href="/top/hoorating.aspx">最多人评论的画 TOP100</a> </li>
+</div>
+
+<div id="information">
+
+ <h3 id="recent_products">按首拼音字漫画</h3>
+
+                    <a href="/comic/pinyin_a/index.html">A</a> <a href="/comic/pinyin_b/index.html">B</a>
+                    <a href="/comic/pinyin_c/index.html">C</a> <a href="/comic/pinyin_d/index.html">D</a>
+                    <a href="/comic/pinyin_e/index.html">E</a> <a href="/comic/pinyin_f/index.html">F</a>
+                    <a href="/comic/pinyin_g/index.html">G</a> <a href="/comic/pinyin_h/index.html">H</a>
+                    <a href="/comic/pinyin_i/index.html">I</a> <a href="/comic/pinyin_j/index.html">J</a>
+                    <a href="/comic/pinyin_k/index.html">K</a> <a href="/comic/pinyin_l/index.html">L</a>
+                    <a href="/comic/pinyin_m/index.html">M</a> <a href="/comic/pinyin_n/index.html">N</a>
+                    <a href="/comic/pinyin_o/index.html">O</a> <a href="/comic/pinyin_p/index.html">P</a>
+                    <a href="/comic/pinyin_q/index.html">Q</a> <a href="/comic/pinyin_r/index.html">R</a>
+                    <a href="/comic/pinyin_s/index.html">S</a> <a href="/comic/pinyin_t/index.html">T</a>
+                    <a href="/comic/pinyin_u/index.html">U</a> <a href="/comic/pinyin_v/index.html">V</a>
+                    <a href="/comic/pinyin_w/index.html">W</a> <a href="/comic/pinyin_x/index.html">X</a>
+                    <a href="/comic/pinyin_y/index.html">Y</a> <a href="/comic/pinyin_z/index.html">Z</a>
+                    <a href="/comic/pinyin_0-9/index.html">0-9</a> <a href="/comic/pinyin_other/index.html">其他</a>
+
+</div>
+
+                <br>
+                
+<div class="cc">
+    <div class="cBadge">
+        最近更新漫画
+    </div>
+    <div class="cRecList">
+        <div><b>1</b><a href='/manhua/33444.html'>回复术士的重来人生</a>17集(卷)</div><div><b>2</b><a href='/manhua/40357.html'>这公司有我喜欢的人</a>6集(卷)</div><div><b>3</b><a href='/manhua/31077.html'>六道的恶女们</a>184集(卷)</div><div><b>4</b><a href='/manhua/37260.html'>东京复仇者</a>152集(卷)</div><div><b>5</b><a href='/manhua/31270.html'>秘密的爬虫类</a>40集(卷)</div><div><b>6</b><a href='/manhua/36970.html'>我在最终boss的魔王城前开教会</a>7集(卷)</div><div><b>7</b><a href='/manhua/38634.html'>王女殿下似乎要生气</a>6集(卷)</div><div><b>8</b><a href='/manhua/27449.html'>妖怪宅院</a>58集(卷)</div><div><b>9</b><a href='/manhua/41563.html'>爱情解除野兽的诅咒</a>1集(卷)</div><div><b>10</b><a href='/manhua/40316.html'>一直多管闲事为朋友之间的恋爱应援之后</a>4集(卷)</div>
+    </div>
+</div>
+<div class="cc">
+    <div class="cBadge">
+        最新加入漫画
+    </div>
+    <div class="cRecList">
+        <div><b>1</b><a href='/manhua/41563.html'>爱情解除野兽的诅咒</a>1集(卷)</div><div><b>2</b><a href='/manhua/41562.html'>初春绽放</a>1集(卷)</div><div><b>3</b><a href='/manhua/41561.html'>一如既往的Hololive</a>1集(卷)</div><div><b>4</b><a href='/manhua/41560.html'>身高差x年龄差</a>1集(卷)</div><div><b>5</b><a href='/manhua/41559.html'>《明日方舟》同人漫画</a>1集(卷)</div><div><b>6</b><a href='/manhua/41558.html'>虎与猫</a>1集(卷)</div><div><b>7</b><a href='/manhua/41557.html'>不死药的成分是什么——蓬莱人杀人概论</a>1集(卷)</div><div><b>8</b><a href='/manhua/41556.html'>恋爱多少分</a>1集(卷)</div><div><b>9</b><a href='/manhua/41555.html'>OTOMARI</a>1集(卷)</div><div><b>10</b><a href='/manhua/41554.html'>正后方的神威</a>1集(卷)</div>
+    </div>
+</div>
+
+                <div class="cc">
+                    <div class="cBadge">
+                        喜欢看本漫画的也喜欢
+                    </div>
+                    <div class="cRecList">
+                        <div><b>1</b><a href='/manhua/9575.html'>柜台西施</a>4集(卷)</div><div><b>2</b><a href='/manhua/34965.html'>Second Arbeit</a>1集(卷)</div><div><b>3</b><a href='/manhua/40320.html'>与球磨型姐妹们一起的日常</a>4集(卷)</div><div><b>4</b><a href='/manhua/36747.html'>无意识中发挥出了男友力的女生</a>3集(卷)</div><div><b>5</b><a href='/manhua/6991.html'>Boy Meets Girl, Girl Meets Boy</a>4集(卷)</div><div><b>6</b><a href='/manhua/3041.html'>嬉皮笑园</a>9集(卷)</div><div><b>7</b><a href='/manhua/7264.html'>萌就4格</a>9集(卷)</div><div><b>8</b><a href='/manhua/18660.html'>百货浮生录</a>1集(卷)</div><div><b>9</b><a href='/manhua/4335.html'>奇异果雪泡</a>1集(卷)</div><div><b>10</b><a href='/manhua/22065.html'>再见、熊茶欧</a>1集(卷)</div>
+                    </div>
+                </div>
+            </div>
+            <div id="list">
+                <h2 class="badge">
+                    HH漫画 汗汗酷漫 -
+                    在线漫画
+                    -
+                    小粥的日常
+                </h2>
+                <div class="product" id="permalink">
+                    <div id="about_style">
+                        <img src='http://img.94201314.net/comicui/41544.JPG' width=165 height=225>
+                    </div>
+                    <div id="about_kit">
+                        <ul>
+                            <li>
+                                <h1>
+                                    小粥的日常
+                                    <div style="width: 247px; margin-top: -5px; float: right; clear: both;">
+                                        <div id="SNSPushSection">
+                                        </div>
+                                    </div>
+                                </h1>
+                            </li>
+                            <li><b>作者:</b>せらみっく</li>
+                            <li><b>状态:</b>连载</li>
+                            <li><b>集数:</b>3集(卷) (138) </li>
+                            <li><b>更新:</b>2020/4/8 6:29:18</li>
+                            <li><b>收藏:</b>0人收藏本漫画</li>
+                            <li><b>评价:</b><img src="/images/starl.gif"><span style="font-size: 18px; color: #ff3300;">0.0</span>分(0人评) <span id="spRatingImg"></span><span id="spRatingMsg">
+                                    </span>
+
+                                <script>initRating()</script>
+
+                            </li>
+                            <li><b title="小粥的日常漫画介绍">简介</b>:收录了由せらみっく老师创作的关于Hololive Gamers之一的猫又小粥的日常漫画</li>
+                            <div id="dvAd9">
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="cInfoAct">
+                        <img src="/images/icons/menu_01.gif"><a href="#" onclick="downComic();return false">漫画世界</a>
+                        <img src="/images/icons/menu_02.gif"><a href="#" onclick="addFav();return false;">收藏漫画</a>
+                        <img src="/images/icons/menu_03.gif"><a href="#" onclick="newRec();return false">推荐漫画</a>
+                        <img src="/images/icons/menu_04.gif"><a href='/manhua/41544/rss.html'>RSS订阅</a>
+                    </div>
+                    <ul>
+                        <li class="kit" id="product_profile_base_kit"><span class="name">
+                            小粥的日常
+                            漫画 目录列表</span></li>
+                    </ul>
+                    <div class="cVolList">
+                        <div class='cVolTag'>周刊杂志每周每月连载单集</div><ul class='cVolUl'><li><a class='l_s' href='/cool385156/1.html?s=3' target='_blank' title='小粥的日常 003集'>小粥的日常 003集</a></li><li><a class='l_s' href='/cool385155/1.html?s=3' target='_blank' title='小粥的日常 002集'>小粥的日常 002集</a></li><li><a class='l_s' href='/cool385029/1.html?s=3' target='_blank' title='小粥的日常 001集'>小粥的日常 001集</a></li></ul>
+                    </div>
+                    <input name="hdComicID" type="hidden" id="hdComicID" value="41544" />
+                    <input name="hdVIPComic" type="hidden" id="hdVIPComic" />
+                    <div id="bottom_ads">
+                        <div style="margin: 0 auto; width: 650px">
+                            <div class="ad b300x250 l">
+
+
+                                <script type="text/javascript" src="/js/300-250a.js"></script>
+
+                            </div>
+                            <div class="ad b300x250 r">
+
+                                <script type="text/javascript" src="/js/300-250.js"></script>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <!--<script>window_onload()</script>-->
+        <div id="foot">
+    <p id="copyright"> Qrz <a href="/sitemap/">网站地图</a></p><script language="javascript" src="/js/stat.js"></script>
+</div>
+
+    </div>
+</body>
+</html>

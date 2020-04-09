@@ -1,0 +1,38 @@
+{
+  "name": "comicz-cli",
+  "version": "1.0.0",
+  "description": "a crawler cli of comics",
+  "main": "bin/cli.js",
+  "scripts": {
+    "test": "node ./test/index.js",
+    "start": "node ./bin/cli.js"
+  },
+  "bin": {
+    "comicz-cli": "bin/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hevi1991/comicz-cli.git"
+  },
+  "keywords": [
+    "crawl",
+    "comic",
+    "cli",
+    "spider"
+  ],
+  "author": "hevi1991",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hevi1991/comicz-cli/issues"
+  },
+  "homepage": "https://github.com/hevi1991/comicz-cli#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "chalk": "^4.0.0",
+    "cheerio": "^1.0.0-rc.3",
+    "fs-extra": "^9.0.0",
+    "inquirer": "^7.1.0",
+    "ora": "^4.0.3",
+    "progress": "^2.0.3"
+  }
+}
