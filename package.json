@@ -1,6 +1,6 @@
 {
   "name": "comicz-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "a crawler cli of comics",
   "main": "index.js",
   "scripts": {
