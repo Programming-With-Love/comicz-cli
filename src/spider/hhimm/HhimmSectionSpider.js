@@ -21,7 +21,7 @@ class HhimmSectionSpider extends Spider {
     const pageURLs = this._parseSectionPages(response.data);
     for (const [index, pageURL] of pageURLs.entries()) {
       const { data } = await request.get(pageURL);
-      images.push({ page: index + 1, href: this._parseImagePage(data) });
+      images.push({ page: index + 1, hrefs: this._parseImagePage(data) });
     }
     return images;
   }
@@ -63,12 +63,12 @@ class HhimmSectionSpider extends Spider {
   _parseImagePage(data) {
     let $ = cheerio.load(data);
     // 节点
-    const node = $("#hdDomain").attr("value").split("|");
+    const nodes = $("#hdDomain").attr("value").split("|");
     // const idx = Math.floor(Math.random() * node.length);
-    const idx = 0;
+    const idx = 1;
     const encryptStr = $("#iBodyQ img").attr("name");
     const decryptStr = this._decrypt(encryptStr);
-    return `${node[idx]}${decryptStr}`;
+    return nodes.map((node) => `${node}${decryptStr}`);
   }
 
   /**

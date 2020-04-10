@@ -1,6 +1,6 @@
 module.exports = class Image {
-  constructor(page, href) {
+  constructor(page, hrefs = []) {
     this.page = page;
-    this.href = href;
+    this.hrefs = hrefs;
   }
 };

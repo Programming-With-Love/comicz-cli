@@ -30,7 +30,7 @@ async function sectionQuery(vals) {
   return Promise.resolve(vals)
     .then(async ({ inputURL }) => {
       // 执行爬取章节
-      const spinner = ora("爬取所选章节页并解析中...\n").start();
+      const spinner = ora("爬取所选章节并解析中...").start();
       const { title, href, sections } = await new HhimmDetailSpider(
         inputURL
       ).crawl();
@@ -72,25 +72,29 @@ async function sectionQuery(vals) {
         );
       }
       // 爬取所选章节内容
-      const spinner = ora("爬取章节页详情并解析中...\n").start();
-      const allImages = await Promise.all(
-        comic.sections.map((section) =>
-          new HhimmSectionSpider(section.href).crawl()
-        )
-      );
-      allImages.forEach((images, index) => {
-        comic.sections[index].images = images.map(
-          (image) => new Image(image.page, image.href)
-        );
-      });
-      spinner.stop();
+      console.log(chalk.cyan(`总共选取${comic.sections.length}章`));
+      for (const [index, section] of comic.sections.entries()) {
+        const spinner = ora(
+          `[${index + 1}]${section.title} 爬取详情并解析中...`
+        ).start();
+        try {
+          const images = await new HhimmSectionSpider(section.href).crawl();
+          section.images = images.map(
+            (image) => new Image(image.page, image.hrefs)
+          );
+          spinner.succeed(`【${section.title}】解析完成`);
+        } catch (error) {
+          spinner.fail(chalk.red(`【${section.title}】解析失败`));
+          throw error;
+        }
+      }
     })
     .then(async () => {
       // 下载图片保存内容
       for (const section of comic.sections) {
         // 进度条
         const bar = new ProgressBar(
-          `${section.title} 下载中: [:bar] :percent :etas :elapsed`,
+          `${section.title} 下载中：[:bar] :percent :current/:total 耗时：:elapsed秒`,
           {
             complete: "=",
             incomplete: " ",
@@ -100,14 +104,25 @@ async function sectionQuery(vals) {
         );
 
         for (const image of section.images) {
-          await new HhimmImageSpider(image.href).crawl(
-            `${process.cwd()}/download/${comic.title}/${section.title}`,
-            image.page
-          );
-          bar.tick();
+          for (const [index, href] of image.hrefs.entries()) {
+            try {
+              await new HhimmImageSpider(href).crawl(
+                `${process.cwd()}/download/${comic.title}/${section.title}`,
+                image.page
+              );
+              bar.tick();
+              break;
+            } catch (error) {
+              if (index === image.hrefs.length - 1) {
+                throw error;
+              }
+              chalk.yellow(`切换节点 ${index}`);
+            }
+          }
         }
       }
       console.log(chalk.yellow(`${comic.title} 下载完成 ~`));
+      process.exit(0);
     });
 }
 
@@ -184,29 +199,38 @@ async function main() {
                 searchURL
               ).crawl();
               spinner.stop();
-              console.log(chalk.blue(info));
               if (comics.length === 0) {
                 throw new Error("没有找到任何内容");
+              } else {
+                console.log(chalk.blue(info));
               }
               // 给命令行提供查找行为
-              return inquirer
-                .prompt([
-                  {
-                    type: "list",
-                    name: "inputURL",
-                    message: "请选择你想下载的漫画：\n",
-                    choices: comics.map((c, index) => ({
-                      name:
-                        `[${index + 1}]` +
-                        c.title +
-                        chalk.gray(` 预览：${c.previewLink} `) +
-                        chalk.green(` 地址：${c.href} `),
-                      value: c.href,
-                    })),
-                  },
-                ])
-                .then(sectionQuery);
-            });
+              return comics;
+            })
+            .then((comics) => {
+              // 选项
+              const choices = comics.map((c, index) => {
+                const title =
+                  c.title.length > 20
+                    ? c.title.substring(0, 20) + "..."
+                    : c.title;
+                return {
+                  name:
+                    `[${index + 1}]` + title + chalk.green(` 预览：${c.href} `),
+                  value: c.href,
+                };
+              });
+              return inquirer.prompt([
+                {
+                  type: "list",
+                  name: "inputURL",
+                  message: "请选择你想下载的漫画：\n",
+                  choices,
+                  pageSize: 30,
+                },
+              ]);
+            })
+            .then(sectionQuery);
         },
       };
       return actions[crawlType]();

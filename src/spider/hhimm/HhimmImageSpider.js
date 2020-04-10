@@ -18,20 +18,31 @@ class HhimmImageSpider extends Spider {
    * @returns
    * @memberof HhimmImageSpider
    */
-  async crawl(storeDirPath, page) {
+  async crawl(storeDirPath = "", page = 1) {
     const response = await request({
       method: "GET",
       responseType: "stream",
       url: this.url.href,
     });
     fse.mkdirsSync(storeDirPath);
-    const dest = response.data.pipe(
-      fse.createWriteStream(
-        `${storeDirPath}/${page}${path
-          .extname(response.request.path)
-          .toLowerCase()}`
-      )
-    );
+
+    return new Promise((resolve, reject) => {
+      const dest = response.data.pipe(
+        fse.createWriteStream(
+          `${storeDirPath}/${page}${path
+            .extname(response.request.path)
+            .toLowerCase()}`
+        )
+      );
+
+      dest.on("finish", () => {
+        resolve();
+      });
+
+      dest.on("error", (err) => {
+        reject(err);
+      });
+    });
   }
 }
 

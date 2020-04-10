@@ -2,7 +2,7 @@
   "name": "comicz-cli",
   "version": "1.0.1",
   "description": "a crawler cli of comics",
-  "main": "bin/cli.js",
+  "main": "index.js",
   "scripts": {
     "test": "node ./test/index.js",
     "start": "node ./bin/cli.js"
