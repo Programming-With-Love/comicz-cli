@@ -103,6 +103,14 @@ async function sectionQuery(vals) {
           }
         );
 
+        // 刷新bar耗时
+        const timerId = setInterval(() => {
+          bar.render();
+          if (bar.complete) {
+            clearInterval(timerId);
+          }
+        }, 1000);
+
         for (const image of section.images) {
           for (const [index, href] of image.hrefs.entries()) {
             try {
