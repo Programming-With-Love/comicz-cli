@@ -32,7 +32,7 @@ class HhimmSectionSpider extends Spider {
           });
           flag = false;
         } catch (error) {
-          console.error(error);
+          //console.error(error);
           this.emit("crawl-page-retry", {
             page: index + 1,
             totalPage: pageURLs.length,
