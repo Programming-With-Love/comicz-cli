@@ -21,7 +21,7 @@ const { Comic, Section, Image } = require("../src/entity/index.js");
 const comic = new Comic();
 
 /**
- * 询问章节后下载
+ * 询问漫画章节后下载
  *
  * @param {*} vals ({inputURL}) 章节路径
  * @returns
@@ -29,8 +29,8 @@ const comic = new Comic();
 async function sectionQuery(vals) {
   return Promise.resolve(vals)
     .then(async ({ inputURL }) => {
-      // 执行爬取章节
-      const spinner = ora("爬取所选章节并解析中...").start();
+      // 执行爬取漫画详情
+      const spinner = ora("爬取所选漫画并解析中...").start();
       try {
         const { title, href, sections } = await new HhimmDetailSpider(
           inputURL
