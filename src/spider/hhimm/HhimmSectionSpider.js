@@ -20,9 +20,28 @@ class HhimmSectionSpider extends Spider {
     const response = await request.get(this.url.href);
     const pageURLs = this._parseSectionPages(response.data);
     for (const [index, pageURL] of pageURLs.entries()) {
-      const { data } = await request.get(pageURL);
-      images.push({ page: index + 1, hrefs: this._parseImagePage(data) });
+      let flag = true;
+      let count = 0;
+      while (flag) {
+        try {
+          const { data } = await request.get(pageURL);
+          images.push({ page: index + 1, hrefs: this._parseImagePage(data) });
+          this.emit("crawl-page-done", {
+            page: index + 1,
+            totalPage: pageURLs.length,
+          });
+          flag = false;
+        } catch (error) {
+          console.error(error);
+          this.emit("crawl-page-retry", {
+            page: index + 1,
+            totalPage: pageURLs.length,
+            retryTimes: ++count,
+          });
+        }
+      }
     }
+    this.emit("crawl-finish", images);
     return images;
   }
 
@@ -64,8 +83,6 @@ class HhimmSectionSpider extends Spider {
     let $ = cheerio.load(data);
     // 节点
     const nodes = $("#hdDomain").attr("value").split("|");
-    // const idx = Math.floor(Math.random() * node.length);
-    const idx = 1;
     const encryptStr = $("#iBodyQ img").attr("name");
     const decryptStr = this._decrypt(encryptStr);
     return nodes.map((node) => `${node}${decryptStr}`);

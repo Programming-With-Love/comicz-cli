@@ -31,15 +31,20 @@ async function sectionQuery(vals) {
     .then(async ({ inputURL }) => {
       // 执行爬取章节
       const spinner = ora("爬取所选章节并解析中...").start();
-      const { title, href, sections } = await new HhimmDetailSpider(
-        inputURL
-      ).crawl();
-      spinner.stop();
-      comic.title = title;
-      comic.href = href;
-      comic.sections = sections.map(
-        (section) => new Section(section.title, section.href)
-      );
+      try {
+        const { title, href, sections } = await new HhimmDetailSpider(
+          inputURL
+        ).crawl();
+        comic.title = title;
+        comic.href = href;
+        comic.sections = sections.map(
+          (section) => new Section(section.title, section.href)
+        );
+      } catch (error) {
+        throw error;
+      } finally {
+        spinner.stop();
+      }
       // 以列表的方式打印章节，供用户选择章节（第一项为爬取所有）
       return inquirer.prompt([
         {
@@ -78,7 +83,21 @@ async function sectionQuery(vals) {
           `[${index + 1}]${section.title} 爬取详情并解析中...`
         ).start();
         try {
-          const images = await new HhimmSectionSpider(section.href).crawl();
+          const hhimmSectionSpider = new HhimmSectionSpider(section.href);
+          hhimmSectionSpider.on("crawl-page-done", ({ page, totalPage }) => {
+            spinner.text = `[${index + 1}]${
+              section.title
+            } 爬取详情并解析中...(${page}/${totalPage})`;
+          });
+          hhimmSectionSpider.on(
+            "crawl-page-retry",
+            ({ page, totalPage, retryTimes }) => {
+              spinner.text = `[${index + 1}]${
+                section.title
+              } 爬取详情并解析中...(${page}/${totalPage} 重试${retryTimes}次)`;
+            }
+          );
+          const images = await hhimmSectionSpider.crawl();
           section.images = images.map(
             (image) => new Image(image.page, image.hrefs)
           );
@@ -94,7 +113,7 @@ async function sectionQuery(vals) {
       for (const section of comic.sections) {
         // 进度条
         const bar = new ProgressBar(
-          `${section.title} 下载中：[:bar] :percent :current/:total 耗时：:elapsed秒`,
+          `${section.title} 下载中：[:bar] :percent :current/:total 耗时：:elapsed秒 `,
           {
             complete: "=",
             incomplete: " ",
@@ -124,7 +143,7 @@ async function sectionQuery(vals) {
               if (index === image.hrefs.length - 1) {
                 throw error;
               }
-              chalk.yellow(`切换节点 ${index}`);
+              console.log(chalk.yellow(`切换节点 ${index + 1}`));
             }
           }
         }
@@ -135,7 +154,7 @@ async function sectionQuery(vals) {
 }
 
 async function main() {
-  inquirer
+  return inquirer
     .prompt([
       {
         type: "list",
@@ -143,12 +162,12 @@ async function main() {
         message: "请选择指令类型：\n",
         choices: [
           {
-            name: "URL 爬取章节",
-            value: "url",
-          },
-          {
             name: "Search 查找名称",
             value: "search",
+          },
+          {
+            name: "URL 爬取章节",
+            value: "url",
           },
         ],
       },
@@ -245,6 +264,7 @@ async function main() {
     })
     .catch((err) => {
       console.error(chalk.red(err));
+      process.exit(1);
     });
 }
 

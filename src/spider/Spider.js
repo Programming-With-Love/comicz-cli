@@ -1,7 +1,9 @@
+const EventEmitter = require("events");
 const { URL } = require("url");
 
-class Spider {
+class Spider extends EventEmitter {
   constructor(url) {
+    super();
     this.url = new URL(url);
   }
 

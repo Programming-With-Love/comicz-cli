@@ -2,7 +2,7 @@ const axios = require("axios");
 
 // 请求超时重新请求次数，请求间隙
 axios.defaults.retry = 5;
-axios.defaults.retryDelay = 1000;
+axios.defaults.retryDelay = 5000;
 
 axios.interceptors.response.use(undefined, function axiosRetryInterceptor(err) {
   var config = err.config;
@@ -35,10 +35,10 @@ axios.interceptors.response.use(undefined, function axiosRetryInterceptor(err) {
 });
 
 const service = axios.create({
-  timeout: 10 * 1000,
+  timeout: 30 * 1000,
   headers: {
     "User-Agent":
-      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36",
+      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36",
   },
 });
 

@@ -34,4 +34,22 @@ async function testHhimmSectionSpider() {
   console.log(result);
 }
 
-testHhimmSectionSpider();
+const EventEmitter = require("events");
+class Man extends EventEmitter {
+  constructor() {
+    super();
+  }
+
+  async doALongStuff(cost = 10) {
+    let count = 0;
+    return new Promise((resolve, reject) => {
+      const timerId = setInterval(() => {
+        this.emit("doing", ++count);
+        if (count === 10) {
+          this.emit("finish");
+          clearInterval(timerId);
+        }
+      }, 1000);
+    });
+  }
+}
