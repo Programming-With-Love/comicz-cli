@@ -1,5 +1,5 @@
 # comicz-cli 说明文档
-一个下载 [hhimm](http://www.hhimm.com/) 网站漫画的命令行工具。
+一个下载漫画的命令行工具。
 
 ## 安装
 ```
@@ -11,17 +11,22 @@ npm install comicz-cli -g
 ```
 comicz-cli
 ```
-2. 选择指令类型
-![](./doc/01.jpg)
-  1. URL 类型
-   ![](./doc/02.png)
-  2. Search 类型
-   ![](./doc/03.png)
-3. 选择章节下载
-![](./doc/04.png)
-4. 等待下载完成
-![](./doc/05.png)
+2. 选择漫画收录来源
+![](doc/1.png)
+3. 检索查找的漫画名称
+![](./doc/2.png)
+4. 选择需要下载的结果
+![](./doc/3.png)
+5. 选择需要下载的章节（操作方式：空格选择，a选择所有，i反选，Enter确定
+![](./doc/4.png)
+6. 等待下载完成
+![](./doc/5.png)
+
+## 支持的源
+- [x] http://www.hhimm.com/
+- [X] https://www.manhuabei.com/
 
 ## TODO
-- [X] url
-- [X] search
+- [x] 多源选择
+- [X] 查询
+- [X] ~~地址爬取~~

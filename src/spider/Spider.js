@@ -9,10 +9,18 @@ class Spider extends EventEmitter {
 
   /**
    * 爬取
-   *
+   * 复写
    * @memberof Spider
    */
   async crawl() {}
+
+  /**
+   * 解析
+   * 复写
+   * @param {*} data
+   * @memberof Spider
+   */
+  _parse(data) { }
 }
 
 module.exports = Spider;

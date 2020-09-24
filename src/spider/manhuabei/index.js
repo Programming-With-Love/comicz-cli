@@ -4,12 +4,12 @@ const ora = require("ora");
 const ProgressBar = require("progress");
 
 const { Comic, Section, Image } = require("../../entity/index.js");
-const HhimmDetailSpider = require("./HhimmDetailSpider.js");
-const HhimmSectionSpider = require("./HhimmSectionSpider.js");
-const HhimmImageSpider = require("./HhimmImageSpider.js");
-const HhimmSearchSpider = require("./HhimmSearchSpider.js");
+const ManhuabeiImageSpider = require("./ManhuabeiImageSpider.js");
+const ManhuabeiSearchSpider = require("./ManhuabeiSearchSpider.js");
+const ManhuabeiDetailSpider = require("./ManhuabeiDetailSpider.js");
+const ManhuabeiSectionSpider = require("./ManhuabeiSectionSpider.js");
 
-function hhimmCli() {
+function manhuabeiCli() {
   const comic = new Comic();
   return inquirer
     .prompt([
@@ -26,9 +26,11 @@ function hhimmCli() {
       },
     ])
     .then(async ({ inputSearch }) => {
-      const searchURL = `http://www.hhimm.com/comic/?act=search&st=${inputSearch}`;
+      const searchURL = `https://www.manhuabei.com/search/?keywords=${inputSearch}`;
       const spinner = ora("查找中...\n").start();
-      const { info, comics } = await new HhimmSearchSpider(searchURL).crawl();
+      const { info, comics } = await new ManhuabeiSearchSpider(
+        searchURL
+      ).crawl();
       spinner.stop();
       if (comics.length === 0) {
         throw new Error("没有找到任何内容");
@@ -54,7 +56,7 @@ function hhimmCli() {
           name: "inputURL",
           message: "请选择你想下载的漫画：\n",
           choices,
-          pageSize: 30,
+          pageSize: 36,
         },
       ]);
     })
@@ -62,7 +64,7 @@ function hhimmCli() {
       // 执行爬取漫画详情
       const spinner = ora("爬取所选漫画并解析中...").start();
       try {
-        const { title, href, sections } = await new HhimmDetailSpider(
+        const { title, href, sections } = await new ManhuabeiDetailSpider(
           inputURL
         ).crawl();
         comic.title = title;
@@ -113,24 +115,11 @@ function hhimmCli() {
           `[${index + 1}]${section.title} 爬取详情并解析中...`
         ).start();
         try {
-          const hhimmSectionSpider = new HhimmSectionSpider(section.href);
-          hhimmSectionSpider.on("crawl-page-done", ({ page, totalPage }) => {
-            spinner.text = `[${index + 1}]${
-              section.title
-            } 爬取详情并解析中...(${page}/${totalPage})`;
-          });
-          hhimmSectionSpider.on(
-            "crawl-page-retry",
-            ({ page, totalPage, retryTimes }) => {
-              spinner.text = `[${index + 1}]${
-                section.title
-              } 爬取详情并解析中...(${page}/${totalPage} 重试${retryTimes}次)`;
-            }
-          );
-          const images = await hhimmSectionSpider.crawl();
+          const images = await new ManhuabeiSectionSpider(section.href).crawl();
           section.images = images.map(
             (image) => new Image(image.page, image.hrefs)
           );
+
           spinner.succeed(`【${section.title}】解析完成`);
         } catch (error) {
           spinner.fail(chalk.red(`【${section.title}】解析失败`));
@@ -162,19 +151,11 @@ function hhimmCli() {
 
         for (const image of section.images) {
           for (const [index, href] of image.hrefs.entries()) {
-            try {
-              await new HhimmImageSpider(href).crawl(
-                `${process.cwd()}/download/${comic.title}/${section.title}`,
-                image.page
-              );
-              bar.tick();
-              break;
-            } catch (error) {
-              if (index === image.hrefs.length - 1) {
-                throw error;
-              }
-              console.log(chalk.yellow(`切换节点 ${index + 1}`));
-            }
+            await new ManhuabeiImageSpider(href).crawl(
+              `${process.cwd()}/download/${comic.title}/${section.title}`,
+              image.page
+            );
+            bar.tick();
           }
         }
       }
@@ -184,9 +165,9 @@ function hhimmCli() {
 }
 
 module.exports = {
-  HhimmDetailSpider,
-  HhimmSectionSpider,
-  HhimmImageSpider,
-  HhimmSearchSpider,
-  hhimmCli,
+  ManhuabeiImageSpider,
+  ManhuabeiSectionSpider,
+  ManhuabeiDetailSpider,
+  ManhuabeiSearchSpider,
+  manhuabeiCli,
 };
