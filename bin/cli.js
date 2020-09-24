@@ -13,7 +13,7 @@ async function main() {
       {
         type: "list",
         name: "scource",
-        message: "请选择漫画来源：\n",
+        message: "comicz-cli version: 1.2.0\n请选择漫画来源：\n",
         choices: [
           {
             name: "hhimm",
