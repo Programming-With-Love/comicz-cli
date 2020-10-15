@@ -23,9 +23,9 @@ comicz-cli
 ![](./doc/5.png)
 
 ## 支持的源
-- [x] http://www.hhimm.com/
+- [X] http://www.hhimm.com/
 - [X] https://www.manhuabei.com/
-- [ ] https://www.77mh.cool/index.html
+- [X] https://www.77mh.cool/index.html
 
 ## TODO
 - [x] 多源选择
