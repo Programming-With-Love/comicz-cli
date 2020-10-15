@@ -72,6 +72,9 @@ function manhuabeiCli() {
         comic.sections = sections.map(
           (section) => new Section(section.title, section.href)
         );
+        if (sections.length === 0) {
+          throw new Error("没有找到漫画的章节内容");
+        }
       } catch (error) {
         throw error;
       } finally {

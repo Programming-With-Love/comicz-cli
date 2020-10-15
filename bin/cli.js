@@ -5,7 +5,7 @@
 // 命令行工具相关
 const inquirer = require("inquirer");
 const chalk = require("chalk");
-const { hhimmCli, manhuabeiCli } = require("../index.js");
+const { hhimmCli, manhuabeiCli, sevenSevenMhCli } = require("../index.js");
 
 async function main() {
   return inquirer
@@ -23,6 +23,10 @@ async function main() {
             name: "manhuabei",
             value: "manhuabei",
           },
+          {
+            name: "77mh",
+            value: "sevenSevenMh",
+          },
         ],
       },
     ])
@@ -31,6 +35,7 @@ async function main() {
       const actions = {
         hhimm: hhimmCli,
         manhuabei: manhuabeiCli,
+        sevenSevenMh: sevenSevenMhCli,
       };
       return actions[scource]();
     })
