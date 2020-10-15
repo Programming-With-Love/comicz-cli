@@ -6,6 +6,9 @@
 const inquirer = require("inquirer");
 const chalk = require("chalk");
 const { hhimmCli, manhuabeiCli, sevenSevenMhCli } = require("../index.js");
+// 版本号
+const packageJson = require("../package.json");
+const version = packageJson.version;
 
 async function main() {
   return inquirer
@@ -13,7 +16,7 @@ async function main() {
       {
         type: "list",
         name: "scource",
-        message: "comicz-cli version: 1.2.1\n请选择漫画来源：\n",
+        message: `comicz-cli: ${version}\n请选择漫画来源：\n`,
         choices: [
           {
             name: "hhimm",

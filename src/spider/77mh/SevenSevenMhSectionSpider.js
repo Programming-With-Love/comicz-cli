@@ -35,24 +35,43 @@ class SevenSevenMhSectionSpider extends Spider {
         let cid = /\/colist_(\d+)\.html/.exec(link_z)[1];
         let coid_num = /\d+\/(\d+)/.exec(this.url.pathname)[1];
         const host = `https://shcss.gdbyhtl.net`;
-        const pathname =
-          atsvr === "hw" ? "/img_v1/hw2_svr.aspx" : "/img_v1/cn_svr.aspx";
+        let pathnames;
+        if (atsvr === "hw") {
+          pathnames = [
+            "/img_v1/hw2_svr.aspx",
+            "/img_v1/cncf_svr.aspx",
+            "/img_v1/cn_svr.aspx",
+            "/img_v1/hwcf_svr.aspx",
+            "/img_v1/fdc_svr.aspx",
+          ];
+        } else {
+          pathnames = [
+            "/img_v1/cn_svr.aspx",
+            "/img_v1/hwcf_svr.aspx",
+            "/img_v1/hw2_svr.aspx",
+            "/img_v1/cncf_svr.aspx",
+            "/img_v1/fdc_svr.aspx",
+          ];
+        }
         const requestParams = `?z=${atsvr}&s=${img_s}&cid=${cid}&coid=${coid_num}`;
-
-        const imgPathname = await request
-          .get(`${host}${pathname}${requestParams}`)
-          .then((res) => {
+        const imgURIs = await Promise.all(
+          pathnames.map((pathname) =>
+            request.get(`${host}${pathname}${requestParams}`)
+          )
+        ).then((reses) => {
+          return reses.map((res) => {
             let script = res.data.replace(/var /g, " ");
             let img_qianzso;
             let webpshow;
             eval(script);
             return img_qianzso[img_s];
           });
+        });
 
         const imgs = msg.split("|").map((img, index) => {
           return {
             page: index + 1,
-            hrefs: [`${imgPathname}${img}`],
+            hrefs: imgURIs.map((imgURI) => `${imgURI}${img}`),
           };
         });
         return imgs;

@@ -156,11 +156,19 @@ function sevenSevenMhCli() {
 
         for (const image of section.images) {
           for (const [index, href] of image.hrefs.entries()) {
-            await new SevenSevenMhImageSpider(href).crawl(
-              `${process.cwd()}/download/${comic.title}/${section.title}`,
-              image.page
-            );
-            bar.tick();
+            try {
+              await new SevenSevenMhImageSpider(href).crawl(
+                `${process.cwd()}/download/${comic.title}/${section.title}`,
+                image.page
+              );
+              bar.tick();
+              break;
+            } catch (error) {
+              if (index === image.hrefs.length - 1) {
+                throw error;
+              }
+              console.log(chalk.yellow(`切换节点 ${index + 1}`));
+            }
           }
         }
       }
