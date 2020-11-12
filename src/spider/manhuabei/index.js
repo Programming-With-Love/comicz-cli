@@ -155,7 +155,7 @@ function manhuabeiCli() {
         for (const image of section.images) {
           for (const [index, href] of image.hrefs.entries()) {
             await new ManhuabeiImageSpider(href).crawl(
-              `${process.cwd()}/download/${comic.title}/${section.title}`,
+              `${process.cwd()}/comic/${comic.title}/${section.title}`,
               image.page
             );
             bar.tick();

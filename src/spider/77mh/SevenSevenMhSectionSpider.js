@@ -14,7 +14,7 @@ class SevenSevenMhSectionSpider extends Spider {
           return src === undefined && html.includes("eval(");
         });
         if (scripts.length !== 1) {
-          throw new Error("此爬虫已失效");
+          throw new Error("此爬虫可能已失效");
         }
         let script = $(scripts[0]).html();
         script = script.replace(/\|?var/g, "| ");
@@ -78,7 +78,7 @@ class SevenSevenMhSectionSpider extends Spider {
       });
     } catch (error) {
       console.error(error);
-      throw new Error("此爬虫已失效");
+      throw new Error("此爬虫可能已失效");
     }
   }
 }

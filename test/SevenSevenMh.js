@@ -11,7 +11,7 @@ async function download() {
   const SevenSevenMhImageSpider = require("../src/spider/77mh/SevenSevenMhImageSpider.js");
   const imgURL = "https://a16d.gdbyhtl.net:64443/h61/202010/14/1553166200.jpg";
   const spider = new SevenSevenMhImageSpider(imgURL);
-  await spider.crawl(`${process.cwd()}/download/`, 1);
+  await spider.crawl(`${process.cwd()}/comic/`, 1);
 }
 // download();
 

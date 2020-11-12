@@ -30,6 +30,6 @@ async function download() {
   const ManhuabeiImageSpider = require("../src/spider/manhuabei/ManhuabeiImageSpider.js");
   const imgURL = "https://f.mlxsc.com/images/cover/202007/15935830580911594494833b61.jpg";
   const spider = new ManhuabeiImageSpider(imgURL);
-  await spider.crawl(`${process.cwd()}/download/`, 1);
+  await spider.crawl(`${process.cwd()}/comic/`, 1);
 }
 

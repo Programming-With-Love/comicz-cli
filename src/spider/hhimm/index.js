@@ -167,7 +167,7 @@ function hhimmCli() {
           for (const [index, href] of image.hrefs.entries()) {
             try {
               await new HhimmImageSpider(href).crawl(
-                `${process.cwd()}/download/${comic.title}/${section.title}`,
+                `${process.cwd()}/comic/${comic.title}/${section.title}`,
                 image.page
               );
               bar.tick();

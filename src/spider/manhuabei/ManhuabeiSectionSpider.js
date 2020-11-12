@@ -28,7 +28,7 @@ class ManhuabeiSectionSpider extends Spider {
             return src === undefined && html.includes("var chapterImages");
           });
           if (scripts.length !== 1) {
-            throw new Error("此爬虫已失效");
+            throw new Error("此爬虫可能已失效");
           }
 
           const script = $(scripts[0]).html();
@@ -55,7 +55,7 @@ class ManhuabeiSectionSpider extends Spider {
       return images.map((href, index) => ({ page: index + 1, hrefs: [href] }));
     } catch (error) {
       console.error(error);
-      throw new Error("此爬虫已失效");
+      throw new Error("此爬虫可能已失效");
     }
   }
 }
