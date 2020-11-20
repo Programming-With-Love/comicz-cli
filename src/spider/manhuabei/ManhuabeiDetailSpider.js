@@ -18,7 +18,7 @@ class ManhuabeiDetailSpider extends Spider {
       const chapeterArr = $(el)
         .find("li>a")
         .map((j, sel) => {
-          const title = $(sel).text().trim();
+          const title = $(sel).find(".list_con_zj").text().trim();
           const href = `${this.url.origin}${$(sel).attr("href")}`;
           return { title, href };
         })
